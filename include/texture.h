@@ -27,6 +27,20 @@ namespace gl {
 			IsError(__FILE__, __LINE__);
 			glBindTexture(GL_TEXTURE_2D, id);
 			IsError(__FILE__, __LINE__);
+			if (nrChannels == 1)
+			{
+				glTexImage2D(
+					GL_TEXTURE_2D,
+					0,
+					GL_RED,
+					width,
+					height,
+					0,
+					GL_RED,
+					GL_UNSIGNED_BYTE,
+					dataDiffuse);
+				IsError(__FILE__, __LINE__);
+			}
 			if (nrChannels == 3)
 			{
 				glTexImage2D(
